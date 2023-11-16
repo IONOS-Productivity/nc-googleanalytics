@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<info xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+	<id>enc_analytics</id>
+	<name>ENC Analytics</name>
+	<summary>GA4 Analytics enabler for Nextcloud</summary>
+	<description><![CDATA[Enable GA4 for Nextcloud]]></description>
+	<version>0.0.1</version>
+	<licence>agpl</licence>
+	<author mail="kupriyanov+nextcloud@strato.de">Mikhailo Matiyenko-Kupriyanov</author>
+	<namespace>EncAnalytics</namespace>
+	<category>customization</category>
+	<bugs>http://example.com/foo</bugs>
+	<dependencies>
+		<nextcloud min-version="27" max-version="27"/>
+	</dependencies>
+</info>
