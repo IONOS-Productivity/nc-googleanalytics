@@ -10,7 +10,7 @@
 	<author mail="kupriyanov+nextcloud@strato.de">Mikhailo Matiyenko-Kupriyanov</author>
 	<namespace>EncAnalytics</namespace>
 	<category>customization</category>
-	<bugs>http://example.com/foo</bugs>
+	<bugs>https://github.com/IONOS-Productivity/enc_analytics/issues</bugs>
 	<dependencies>
 		<nextcloud min-version="27" max-version="30"/>
 	</dependencies>
