@@ -14,3 +14,7 @@ License: AGPL-3.0-or-later
 Files: composer.phar
 Copyright: Nils Adermann, Jordi Boggiano <https://github.com/composer/composer>
 License: MIT
+
+Files: phpunit.phar
+Copyright: Sebastian Bergmann <https://docs.phpunit.de/en/10.5/copyright.html>
+License: BSD-3-Clause
