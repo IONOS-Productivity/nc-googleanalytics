@@ -5,7 +5,7 @@
 	<name>ENC Analytics</name>
 	<summary>GA4 Analytics enabler for Nextcloud</summary>
 	<description><![CDATA[Enable GA4 for Nextcloud]]></description>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<licence>agpl</licence>
 	<author mail="kupriyanov+nextcloud@strato.de">Mikhailo Matiyenko-Kupriyanov</author>
 	<namespace>EncAnalytics</namespace>
