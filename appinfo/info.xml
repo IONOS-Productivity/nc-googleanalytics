@@ -12,6 +12,6 @@
 	<category>customization</category>
 	<bugs>http://example.com/foo</bugs>
 	<dependencies>
-		<nextcloud min-version="27" max-version="27"/>
+		<nextcloud min-version="27" max-version="30"/>
 	</dependencies>
 </info>
