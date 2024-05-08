@@ -1,4 +1,7 @@
 window.dataLayer = window.dataLayer || [];
+dataLayer.push({
+	'gtm.blocklist': ['f']
+});
 
 function gtag() {
 	dataLayer.push(arguments);
