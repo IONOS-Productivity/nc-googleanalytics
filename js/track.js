@@ -1,6 +1,6 @@
 window.dataLayer = window.dataLayer || [];
 dataLayer.push({
-	'gtm.blocklist': ['f'],
+	'gtm.blocklist': ['f', 'u'],
 });
 
 /* eslint-disable */
