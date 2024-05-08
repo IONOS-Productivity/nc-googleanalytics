@@ -4,7 +4,7 @@ window.dataLayer = window.dataLayer || [];
  * https://developers.google.com/tag-platform/tag-manager/restrict
  */
 dataLayer.push({
-	'gtm.blocklist': ['f'],
+	'gtm.blocklist': ['f', 'u'],
 });
 
 /* eslint-disable */
