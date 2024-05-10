@@ -39,7 +39,7 @@ class Application extends App implements IBootstrap {
 	}
 
 	public function addContentSecurityPolicy(ContentSecurityPolicyManager $policyManager): void {
-		$allowedUrl = "www.googletagmanager.com";
+		$allowedUrl = "*.googletagmanager.com tagmanager.google.com *.google-analytics.com";
 		$policy = new ContentSecurityPolicy();
 
 		$policy->addAllowedScriptDomain($allowedUrl);
