@@ -1,9 +1,104 @@
+const ENC_TRACKING = {
+	privacyConsentCookie: "PRIVACY_CONSENT",
+	pathsToSanitize: [
+		/^((\/index\.php|)\/apps\/files\/personal)(.*)$/,
+		/^((\/index\.php|)\/apps\/files\/personal\/)(.*)$/,
+		/^((\/index\.php|)\/apps\/files\/resent)$/,
+		/^((\/index\.php|)\/apps\/files\/resent\/)(.*)$/,
+		/^((\/index\.php|)\/apps\/files\/favorites)$/,
+		/^((\/index\.php|)\/apps\/files\/favorites\/)(.*)$/,
+		/^((\/index\.php|)\/apps\/files\/trashbin)$/,
+		/^((\/index\.php|)\/apps\/files\/trashbin\/)(.*)$/,
+		/^((\/index\.php|)\/apps\/files)$/,
+		/^((\/index\.php|)\/apps\/files\/)(.*)$/,
+	],
+	lastEventId: 0,
+	eventCounter: 0,
+	/**
+	 * Array of paths as regex to sanitize
+	 * @param {string} url
+	 * @returns {string}
+	 */
+	sanitizeUrl: (url) => {
+		console.group('sanitizeUrl');
+		const urlObj = new URL(url);
+
+		console.log('URL:before', url);
+
+		for (const path of ENC_TRACKING.pathsToSanitize) {
+			if (path.test(urlObj.pathname)) {
+				const matched = urlObj.pathname.match(path);
+
+				let pathParametersHash = '';
+
+				if (matched[1].endsWith('/')) {
+					pathParametersHash = '~sanitized~';
+				}
+
+				const pathnameSanitized = `${matched[1]}${pathParametersHash}`;
+				urlObj.pathname = `${pathnameSanitized}`;
+				if (urlObj.search) {
+					urlObj.search = '';
+				}
+				console.log('URL:after', urlObj.toString());
+				console.groupEnd();
+				return urlObj.toString();
+			}
+		}
+		console.groupEnd();
+		return url;
+	},
+
+	/**
+	 * Sanitize GTM events
+	 * @param {IArguments} args arguments passed to GTM event
+	 * @returns {IArguments} sanitized arguments
+	 */
+	sanitizeGTMEvent: (args) => {
+		if (args.length === 0) {
+			return args;
+		}
+
+		const event = args[0];
+		if (event.event === undefined) {
+			return args;
+		}
+
+		let sanitizedArgs = args;
+		ENC_TRACKING.eventCounter++;
+		if (event.event === 'gtm.historyChange-v2') {
+			console.trace('historyChange-v2 event', event);
+			sanitizedArgs[0]['gtm.oldUrl'] = `${ENC_TRACKING.sanitizeUrl(sanitizedArgs[0]['gtm.oldUrl'])}?_=${ENC_TRACKING.lastEventId}`; //sanitizeUrl(sanitizedArgs[0]['gtm.oldUrl']);
+			sanitizedArgs[0]['gtm.newUrl'] = `${ENC_TRACKING.sanitizeUrl(document.location.href)}?_=${ENC_TRACKING.eventCounter}`; //sanitizeUrl(document.location.href);
+
+			ENC_TRACKING.lastEventId = ENC_TRACKING.eventCounter;
+		} else if (event.event.startsWith('gtm.historyChange')) {
+			console.warn('Unsupported historyChange event', event);
+		}
+
+		return sanitizedArgs;
+	}
+};
+
+console.log('ENC_TRACKING', ENC_TRACKING);
+
 window.dataLayer = window.dataLayer || [];
 dataLayer.push({
 	'gtm.blocklist': ['f', 'u']
 });
 
+const dataLayerPush = window.dataLayer.push;
+window.dataLayer.push = function () {
+	console.group('dataLayer.push');
+	console.log('dataLayer.push:before', arguments[0]);
+	const sanitized = ENC_TRACKING.sanitizeGTMEvent(arguments);
+	console.log('dataLayer.push:sanitized', sanitized);
+	dataLayerPush.apply(window.dataLayer, sanitized);
+	console.groupEnd();
+}
+
 function gtag() {
+	console.log('gtag', arguments);
 	dataLayer.push(arguments);
 }
 
@@ -43,7 +138,7 @@ function updateConsent() {
 	let privacyConsentDecoded = {};
 
 	try {
-		const cookie = getCookie('PRIVACY_CONSENT');
+		const cookie = getCookie(ENC_TRACKING.privacyConsentCookie);
 		if (cookie === '' || !cookie) {
 			throw new Error('No privacy consent cookie found')
 		}
