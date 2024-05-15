@@ -3,10 +3,18 @@ Upstream-Name: ENC Analytics
 Upstream-Contact: Mikhailo Matiyenko-Kupriyanov <kupriyanov+nextcloud@strato.de>
 Source: https://github.com/nextcloud/profiler
 
-Files: package-lock.json package.json composer.json composer.lock
+Files: package-lock.json package.json composer.json composer.lock lib/*.php lib/**/*.php appinfo/* js/*.js .gitlab-ci.yml README.md
 Copyright: Mikhailo Matiyenko-Kupriyanov <kupriyanov+nextcloud@strato.de>
 License: AGPL-3.0-or-later
 
 Files: l10n/*.js l10n/*.json
 Copyright: Nextcloud translators <https://www.transifex.com/nextcloud/>
 License: AGPL-3.0-or-later
+
+Files: composer.phar
+Copyright: Nils Adermann, Jordi Boggiano <https://github.com/composer/composer>
+License: MIT
+
+Files: phpunit.phar
+Copyright: Sebastian Bergmann <https://docs.phpunit.de/en/10.5/copyright.html>
+License: BSD-3-Clause
