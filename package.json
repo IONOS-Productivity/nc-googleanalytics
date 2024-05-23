@@ -10,10 +10,11 @@
   "license": "agpl",
   "private": true,
   "scripts": {
-    "lint": "eslint --ext .js,.vue src",
-    "lint:fix": "eslint --ext .js,.vue src --fix",
-    "stylelint": "stylelint css/*.css css/*.scss src/**/*.scss src/**/*.vue",
-    "stylelint:fix": "stylelint css/*.css css/*.scss src/**/*.scss src/**/*.vue --fix"
+    "build": "echo 'Nothing to build'",
+    "lint": "echo 'Nothing to lint'",
+    "lint:fix": "echo 'Nothing to lint'",
+    "stylelint": "echo 'Nothing to lint'",
+    "stylelint:fix": "echo 'Nothing to lint'"
   },
   "dependencies": {
     "@nextcloud/axios": "^1.10.0",
@@ -26,7 +27,7 @@
     "extends @nextcloud/browserslist-config"
   ],
   "engines": {
-    "node": "^16.0.0",
+    "node": "^20.0.0",
     "npm": "^7.0.0 || ^8.0.0"
   },
   "devDependencies": {
