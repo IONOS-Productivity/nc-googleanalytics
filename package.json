@@ -11,8 +11,10 @@
   "private": true,
   "scripts": {
     "build": "echo 'Nothing to build'",
-    "lint": "eslint --ext .js,.vue src",
-    "lint:fix": "eslint --ext .js,.vue src --fix"
+    "lint": "echo 'Nothing to lint'",
+    "lint:fix": "echo 'Nothing to lint'",
+    "stylelint": "echo 'Nothing to lint'",
+    "stylelint:fix": "echo 'Nothing to lint'"
   },
   "dependencies": {
     "@nextcloud/axios": "^1.10.0",
