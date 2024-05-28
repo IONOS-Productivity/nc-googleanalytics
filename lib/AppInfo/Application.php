@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace OCA\EncAnalytics\AppInfo;
+namespace OCA\NCGoogleAnalytics\AppInfo;
 
 use OC\Security\CSP\ContentSecurityPolicyManager;
 use OC\Security\CSP\ContentSecurityPolicyNonceManager;
@@ -14,7 +14,7 @@ use OCP\IURLGenerator;
 use OCP\Util;
 
 class Application extends App implements IBootstrap {
-	public const APP_ID = 'enc_analytics';
+	public const APP_ID = 'googleanalytics';
 
 	public function __construct() {
 		parent::__construct(self::APP_ID);
@@ -32,7 +32,7 @@ class Application extends App implements IBootstrap {
 		Util::addHeader(
 			'script',
 			[
-				'src' => $urlGenerator->linkToRoute('enc_analytics.JavaScript.tracking'),
+				'src' => $urlGenerator->linkToRoute('googleanalytics.JavaScript.tracking'),
 				'nonce' => $nonceManager->getNonce(),
 			], ''
 		);

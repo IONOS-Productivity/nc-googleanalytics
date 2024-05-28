@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace OCA\EncAnalytics\Migration;
+namespace OCA\NCGoogleAnalytics\Migration;
 
 use Closure;
 use OCP\DB\ISchemaWrapper;

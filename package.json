@@ -1,5 +1,5 @@
 {
-  "name": "enc_analytics",
+  "name": "nc-googleanalytics",
   "description": "GA4 Analytics enabler for Nextcloud",
   "version": "0.0.1",
   "author": "Mikhailo Matiyenko-Kupriyanov <kupriyanov+nextcloud@strato.de>",

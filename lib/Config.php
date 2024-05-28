@@ -1,6 +1,6 @@
 <?php
 
-namespace OCA\EncAnalytics;
+namespace OCA\NCGoogleAnalytics;
 
 use OCP\IConfig;
 
@@ -11,7 +11,7 @@ class Config {
 	}
 
 	public function getTrackingKey(): ?string {
-		$value = $this->config->getSystemValueString('enc_analytics_tracking_key', '');
+		$value = $this->config->getSystemValueString('googleanalytics_tracking_key', '');
 		return (empty($value)) ? null : $value;
 	}
 }
