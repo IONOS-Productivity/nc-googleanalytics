@@ -11,8 +11,8 @@
   "private": true,
   "scripts": {
     "build": "echo 'Nothing to build'",
-    "lint": "eslint --ext .js,.vue src",
-    "lint:fix": "eslint --ext .js,.vue src --fix",
+    "lint": "eslint --ext .js js",
+    "lint:fix": "eslint --ext .js js --fix",
     "stylelint": "echo 'Nothing to stylelint'",
     "stylelint:fix": "echo 'Nothing to stylelint'"
   },
