@@ -1,25 +1,26 @@
 # ENC Analytics
 Place this app in **nextcloud/apps/**
+App folder should be "googleanalytics"
 
 ## enable tracking
 
 ```shell
-./occ config:system:set --type string --value GTM-FOO  enc_analytics_tracking_key
+./occ config:system:set --type string --value GTM-FOO  googleanalytics_tracking_key
 ```
-System config value enc_analytics_tracking_key => GTM-FOO set to empty string
+System config value googleanalytics_tracking_key => GTM-FOO set to empty string
 
 or just add to config.php
 
 ```php
 $CONFIG = [
-	'enc_analytics_tracking_key' => 'GTM-FOO',
+	'googleanalytics_tracking_key' => 'GTM-FOO',
 ]
 ```
 
 ## disable tracking
 
 ```shell
-./occ config:system:delete enc_analytics_tracking_key
+./occ config:system:delete googleanalytics_tracking_key
 ```
 
 

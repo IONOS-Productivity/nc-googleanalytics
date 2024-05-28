@@ -1,5 +1,5 @@
 {
-	"name": "nextcloud/enc_analytics",
+	"name": "nextcloud/googleanalytics",
 	"description": "GA4 Analytics enabler for Nextcloud",
 	"type": "project",
 	"license": "AGPL-3.0-or-later",

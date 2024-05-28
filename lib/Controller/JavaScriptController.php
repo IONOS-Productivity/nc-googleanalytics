@@ -1,8 +1,8 @@
 <?php
 
-namespace OCA\EncAnalytics\Controller;
+namespace OCA\NCGoogleAnalytics\Controller;
 
-use OCA\EncAnalytics\Config;
+use OCA\NCGoogleAnalytics\Config;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\DataDownloadResponse;
 use OCP\AppFramework\Http\TextPlainResponse;

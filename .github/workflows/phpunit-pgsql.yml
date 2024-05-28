@@ -38,7 +38,7 @@ jobs:
       - name: Set app env
         run: |
           # Split and keep last
-          echo "APP_NAME=${GITHUB_REPOSITORY##*/}" >> $GITHUB_ENV
+          echo "APP_NAME=googleanalytics" >> $GITHUB_ENV
 
       - name: Checkout server
         uses: actions/checkout@v3
