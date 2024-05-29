@@ -3,5 +3,16 @@
 module.exports = {
 	extends: [
 		'@nextcloud',
-	]
+	],
+	overrides: [
+		{
+			files: ['js/track.js'],
+			rules: {
+				semi: 'off',
+			},
+			globals: {
+				dataLayer: 'readonly',
+			},
+		},
+	],
 }
