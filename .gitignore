@@ -9,3 +9,6 @@ node_modules/
 js/*hot-update.*
 composer.phar
 phpunit.phar
+
+# Tests - auto-generated files
+/tests/.phpunit.result.cache
