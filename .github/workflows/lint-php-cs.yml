@@ -5,7 +5,7 @@
 # SPDX-FileCopyrightText: Nextcloud contributors
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-name: Lint
+name: Lint php-cs
 
 on:
   pull_request:
