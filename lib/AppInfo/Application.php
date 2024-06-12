@@ -68,6 +68,15 @@ class Application extends App implements IBootstrap
         $policy->addAllowedImageDomain("*.google-analytics.com");
         $policy->addAllowedConnectDomain("*.google-analytics.com");
 
+        // additional SCP for GTM preview mode
+        $policy->addAllowedStyleDomain("https://www.googletagmanager.com");
+        $policy->addAllowedStyleDomain("https://fonts.googleapis.com");
+
+        $policy->addAllowedFontDomain("https://fonts.gstatic.com");
+
+        $policy->addAllowedImageDomain("https://fonts.gstatic.com");
+        $policy->addAllowedImageDomain("https://fonts.googleapis.com");
+
         $policyManager->addDefaultPolicy($policy);
     }
 }

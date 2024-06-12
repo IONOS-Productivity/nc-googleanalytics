@@ -75,6 +75,14 @@ class ApplicationTest extends TestCase
         $policy->addAllowedImageDomain("*.google-analytics.com");
         $policy->addAllowedConnectDomain("*.google-analytics.com");
 
+        $policy->addAllowedStyleDomain("https://www.googletagmanager.com");
+        $policy->addAllowedStyleDomain("https://fonts.googleapis.com");
+
+        $policy->addAllowedFontDomain("https://fonts.gstatic.com");
+
+        $policy->addAllowedImageDomain("https://fonts.gstatic.com");
+        $policy->addAllowedImageDomain("https://fonts.googleapis.com");
+
         $this->contentSecurityPolicyManager->expects($this->once())
             ->method('addDefaultPolicy')
             ->with($policy);
