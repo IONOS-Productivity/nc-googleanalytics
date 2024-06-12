@@ -2,6 +2,8 @@
 
 namespace OCA\NCGoogleAnalytics\Controller;
 
+use OC\Security\CSP\ContentSecurityPolicy;
+use OC\Security\CSP\ContentSecurityPolicyNonceManager;
 use OCA\NCGoogleAnalytics\Config;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\DataDownloadResponse;
@@ -13,6 +15,7 @@ class JavaScriptController extends Controller
 {
     /** @var \OCP\IConfig */
     protected $config;
+    protected ContentSecurityPolicyNonceManager $nonceManager;
 
     /**
      * constructor of the controller
@@ -24,10 +27,12 @@ class JavaScriptController extends Controller
     public function __construct(
         $appName,
         IRequest $request,
-        Config $config
+        Config $config,
+        ContentSecurityPolicyNonceManager $nonceManager,
     ) {
         parent::__construct($appName, $request);
         $this->config = $config;
+        $this->nonceManager = $nonceManager;
     }
 
     /**
@@ -49,6 +54,7 @@ class JavaScriptController extends Controller
 
         $script = file_get_contents(__DIR__ . '/../../js/track.js');
         $script = str_replace('%GTM_ID%', $gtmId, $script);
+        $script = str_replace('%nonce%', $this->nonceManager->getNonce(), $script);
 
         return new DataDownloadResponse($script, 'gtm.js', 'text/javascript');
     }
