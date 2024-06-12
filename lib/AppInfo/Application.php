@@ -45,14 +45,28 @@ class Application extends App implements IBootstrap
         );
     }
 
+    /**
+     * Add the Content Security Policy for the Google Analytics tracking according
+     * to https://developers.google.com/tag-platform/security/guides/csp
+     *
+     * @param ContentSecurityPolicyManager $policyManager
+     * @return void
+     */
     public function addContentSecurityPolicy(ContentSecurityPolicyManager $policyManager): void
     {
-        $allowedUrl = "*.googletagmanager.com tagmanager.google.com *.google-analytics.com";
         $policy = new ContentSecurityPolicy();
 
-        $policy->addAllowedScriptDomain($allowedUrl);
-        $policy->addAllowedImageDomain($allowedUrl);
-        $policy->addAllowedConnectDomain($allowedUrl);
+        $policy->addAllowedScriptDomain("*.googletagmanager.com");
+        $policy->addAllowedImageDomain("*.googletagmanager.com");
+        $policy->addAllowedConnectDomain("*.googletagmanager.com");
+
+        $policy->addAllowedScriptDomain("tagmanager.google.com");
+        $policy->addAllowedImageDomain("tagmanager.google.com");
+        $policy->addAllowedConnectDomain("tagmanager.google.com");
+
+        $policy->addAllowedScriptDomain("*.google-analytics.com");
+        $policy->addAllowedImageDomain("*.google-analytics.com");
+        $policy->addAllowedConnectDomain("*.google-analytics.com");
 
         $policyManager->addDefaultPolicy($policy);
     }

@@ -61,13 +61,19 @@ class ApplicationTest extends TestCase
 
     public function testContentSecurityPolicyAddition(): void
     {
-        $allowedUrl = "*.googletagmanager.com tagmanager.google.com *.google-analytics.com";
-
         $policy = new ContentSecurityPolicy();
 
-        $policy->addAllowedScriptDomain($allowedUrl);
-        $policy->addAllowedImageDomain($allowedUrl);
-        $policy->addAllowedConnectDomain($allowedUrl);
+        $policy->addAllowedScriptDomain("*.googletagmanager.com");
+        $policy->addAllowedImageDomain("*.googletagmanager.com");
+        $policy->addAllowedConnectDomain("*.googletagmanager.com");
+
+        $policy->addAllowedScriptDomain("tagmanager.google.com");
+        $policy->addAllowedImageDomain("tagmanager.google.com");
+        $policy->addAllowedConnectDomain("tagmanager.google.com");
+
+        $policy->addAllowedScriptDomain("*.google-analytics.com");
+        $policy->addAllowedImageDomain("*.google-analytics.com");
+        $policy->addAllowedConnectDomain("*.google-analytics.com");
 
         $this->contentSecurityPolicyManager->expects($this->once())
             ->method('addDefaultPolicy')
