@@ -7,3 +7,8 @@
 node_modules/
 /.php_cs.cache
 js/*hot-update.*
+composer.phar
+phpunit.phar
+
+# Tests - auto-generated files
+/tests/.phpunit.result.cache

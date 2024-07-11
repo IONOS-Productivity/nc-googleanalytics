@@ -20,14 +20,14 @@ jobs:
 
     strategy:
       matrix:
-        php-versions: ['8.0']
-        server-versions: ['master']
+        php-versions: ['8.1', '8.2']
+        server-versions: ['stable29']
 
     steps:
       - name: Set app env
         run: |
           # Split and keep last
-          echo "APP_NAME=${GITHUB_REPOSITORY##*/}" >> $GITHUB_ENV
+          echo "APP_NAME=googleanalytics" >> $GITHUB_ENV
 
       - name: Checkout server
         uses: actions/checkout@v3

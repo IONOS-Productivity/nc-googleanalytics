@@ -1,32 +1,28 @@
 {
-  "name": "enc_analytics",
+  "name": "nc-googleanalytics",
   "description": "GA4 Analytics enabler for Nextcloud",
   "version": "0.0.1",
   "author": "Mikhailo Matiyenko-Kupriyanov <kupriyanov+nextcloud@strato.de>",
   "contributors": [],
   "bugs": {
-    "url": "http://example.com/foo"
+    "url": "https://github.com/IONOS-Productivity/nc-googleanalytics/issues"
   },
   "license": "agpl",
   "private": true,
   "scripts": {
-    "lint": "eslint --ext .js,.vue src",
-    "lint:fix": "eslint --ext .js,.vue src --fix",
-    "stylelint": "stylelint css/*.css css/*.scss src/**/*.scss src/**/*.vue",
-    "stylelint:fix": "stylelint css/*.css css/*.scss src/**/*.scss src/**/*.vue --fix"
+    "build": "echo 'Nothing to build'",
+    "lint": "eslint --ext .js js",
+    "lint:fix": "eslint --ext .js js --fix",
+    "stylelint": "echo 'Nothing to stylelint'",
+    "stylelint:fix": "echo 'Nothing to stylelint'"
   },
   "dependencies": {
-    "@nextcloud/axios": "^1.10.0",
-    "@nextcloud/dialogs": "^3.1.4",
-    "@nextcloud/router": "^2.0.0",
-    "@nextcloud/vue": "^5.4.0",
-    "vue": "^2.7.0"
   },
   "browserslist": [
     "extends @nextcloud/browserslist-config"
   ],
   "engines": {
-    "node": "^16.0.0",
+    "node": "^20.0.0",
     "npm": "^7.0.0 || ^8.0.0"
   },
   "devDependencies": {
