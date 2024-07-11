@@ -4,7 +4,14 @@ window.dataLayer = window.dataLayer || [];
  * https://developers.google.com/tag-platform/tag-manager/restrict
  */
 dataLayer.push({
-	'gtm.blocklist': ['f', 'u'],
+	// Don't send referrer and location because they may contain sensitive
+	// personal idendifiable information
+	'gtm.blocklist': [
+		// Don't transfer the referrer
+		'f',
+		// Don't transfer the current location (URL)
+		'u'
+	],
 });
 
 /* eslint-disable */
