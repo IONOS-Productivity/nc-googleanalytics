@@ -6,18 +6,27 @@
 
 namespace OCA\NCGoogleAnalytics\Listener;
 
+use OCA\NCGoogleAnalytics\Service\ConsentDetection;
 use OCP\AppFramework\Http\ContentSecurityPolicy;
 use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;
 use OCP\Security\CSP\AddContentSecurityPolicyEvent;
 
+/**
+ * Configure Google sites for content security policy (CSP).
+ */
 class AddCsp implements IEventListener {
 	public function __construct(
+		private ConsentDetection $consentDetection
 	) {
 	}
 
 	public function handle(Event $event): void {
 		if (!($event instanceof AddContentSecurityPolicyEvent)) {
+			return;
+		}
+
+		if (!$this->consentDetection->isConsentGiven()) {
 			return;
 		}
 

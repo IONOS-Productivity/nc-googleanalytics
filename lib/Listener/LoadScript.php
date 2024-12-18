@@ -7,6 +7,8 @@
 
 namespace OCA\NCGoogleAnalytics\Listener;
 
+use OC\Security\CSP\ContentSecurityPolicyNonceManager;
+use OCA\NCGoogleAnalytics\Service\ConsentDetection;
 use OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent;
 use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;
@@ -20,11 +22,16 @@ class LoadScript implements IEventListener {
 	public function __construct(
 		private IURLGenerator $urlGenerator,
 		private ContentSecurityPolicyNonceManager $nonceManager,
+		private ConsentDetection $consentDetection,
 	) {
 	}
 
 	public function handle(Event $event): void {
 		if (!($event instanceof BeforeTemplateRenderedEvent)) {
+			return;
+		}
+
+		if (!$this->consentDetection->isConsentGiven()) {
 			return;
 		}
 
