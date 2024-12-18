@@ -15,12 +15,17 @@ use OCP\IRequest;
  * The implementation is IONOS specific.
  */
 class ConsentDetection {
+    const CONSENT_COOKIE_NAME = "PRIVACY_CONSENT";
+
     public function __construct(
         private IRequest $request,
     ) {
     }
 
     public function isConsentGiven(): bool {
-        return false;
+        $codedJsonStr = $this->request->getCookie(self::CONSENT_COOKIE_NAME);
+        $jsonStr = base64_decode($codedJsonStr);
+        $settings = json_decode($jsonStr);
+        return $settings->statistics ?? false;
     }
 }
