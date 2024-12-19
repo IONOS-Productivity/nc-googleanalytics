@@ -10,6 +10,8 @@ namespace OCA\NCGoogleAnalytics\AppInfo;
 
 use OC\Security\CSP\ContentSecurityPolicyManager;
 use OC\Security\CSP\ContentSecurityPolicyNonceManager;
+use OCA\NCGoogleAnalytics\Service\Consent\IConsentService;
+use OCA\NCGoogleAnalytics\Service\Consent\IonosConsentService;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
@@ -17,6 +19,7 @@ use OCP\AppFramework\Bootstrap\IRegistrationContext;
 use OCP\AppFramework\Http\ContentSecurityPolicy;
 use OCP\IURLGenerator;
 use OCP\Util;
+use Psr\Container\ContainerInterface;
 
 class Application extends App implements IBootstrap {
 	public const APP_ID = 'googleanalytics';
@@ -26,6 +29,9 @@ class Application extends App implements IBootstrap {
 	}
 
 	public function register(IRegistrationContext $context): void {
+		$context->registerService(IConsentService::class, function (ContainerInterface $c): IonosConsentService {
+			return new IonosConsentService();
+		});
 	}
 
 	public function boot(IBootContext $context): void {
