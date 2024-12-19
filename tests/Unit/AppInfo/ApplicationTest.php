@@ -9,7 +9,10 @@ namespace OCA\NCGoogleAnalytics\Tests\AppInfo;
 use OC\Security\CSP\ContentSecurityPolicyManager;
 use OC\Security\CSP\ContentSecurityPolicyNonceManager;
 use OCA\NCGoogleAnalytics\AppInfo\Application;
+use OCA\NCGoogleAnalytics\Service\Consent\IConsentService;
+use OCA\NCGoogleAnalytics\Service\Consent\IonosConsentService;
 use OCP\AppFramework\Bootstrap\IBootContext;
+use OCP\AppFramework\Bootstrap\IRegistrationContext;
 use OCP\AppFramework\Http\ContentSecurityPolicy;
 use OCP\IURLGenerator;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -21,12 +24,14 @@ class ApplicationTest extends TestCase {
 	private ContentSecurityPolicyNonceManager|MockObject $nonceManager;
 	private ContentSecurityPolicyManager|MockObject $contentSecurityPolicyManager;
 	private IBootContext|MockObject $context;
+	private $registrationContext;
 
 	protected function setUp(): void {
 		$this->urlGenerator = $this->createMock(IURLGenerator::class);
 		$this->nonceManager = $this->createMock(ContentSecurityPolicyNonceManager::class);
 		$this->contentSecurityPolicyManager = $this->createMock(ContentSecurityPolicyManager::class);
 		$this->context = $this->createMock(IBootContext::class);
+		$this->registrationContext = $this->createMock(IRegistrationContext::class);
 		$this->application = new Application();
 	}
 
@@ -40,6 +45,25 @@ class ApplicationTest extends TestCase {
 
 		$this->application->boot($this->context);
 	}
+
+	public function testRegister(): void {
+		$this->registrationContext->expects($this->exactly(1))
+			->method('registerService')
+			->with(
+				IConsentService::class,
+				$this->isInstanceOf(\Closure::class),
+				true
+			);
+
+		$this->application->register($this->registrationContext);
+	}
+
+	public function testConsentServiceRegistration(): void {
+		$consentService = \OC::$server->getRegisteredAppContainer(Application::APP_ID)->get(IConsentService::class);
+
+		$this->assertInstanceOf(IonosConsentService::class, $consentService, 'FATAL: IonosConsentService is not registered!');
+	}
+
 	public function testTrackingScriptAddition(): void {
 		$this->urlGenerator->method('linkToRoute')->willReturn('someUrl');
 		$this->nonceManager->method('getNonce')->willReturn('someNonce');

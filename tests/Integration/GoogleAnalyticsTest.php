@@ -17,6 +17,9 @@ use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
+/**
+ * @backupGlobals enabled
+ */
 class GoogleAnalyticsTest extends TestCase {
 	private JavaScriptController $controller;
 
@@ -37,14 +40,38 @@ class GoogleAnalyticsTest extends TestCase {
 		$this->controller = $container->get(JavaScriptController::class);
 	}
 
+	private function mockContentServiceState(bool $statistics = false): void {
+		$cookieValue = base64_encode(json_encode([
+			'technical' => false,
+			'statistics' => $statistics,
+			'marketing' => false,
+			'partnerships' => false,
+		]));
+
+		$_COOKIE = ['PRIVACY_CONSENT' => $cookieValue];
+	}
+
 	public function tearDown(): void {
 		$this->config->setSystemValue('googleanalytics_tracking_key', null);
+		unset($_COOKIE['PRIVACY_CONSENT']);
 	}
 
 	/**
 	 * @throws Exception
 	 */
 	public function testTrackingReturnsDisabledResponseWhenNoKey(): void {
+		$this->mockContentServiceState(true);
+		$response = $this->controller->tracking();
+
+		$this->assertInstanceOf(TextPlainResponse::class, $response);
+		$this->assertEquals('// tracking disabled', $response->render());
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public function testTrackingReturnsDisabledResponseWhenNoConsent(): void {
+		$this->mockContentServiceState(true);
 		$response = $this->controller->tracking();
 
 		$this->assertInstanceOf(TextPlainResponse::class, $response);
@@ -55,6 +82,7 @@ class GoogleAnalyticsTest extends TestCase {
 	 * @throws Exception
 	 */
 	public function testTrackingReturnsScriptResponseWhenKeyExists(): void {
+		$this->mockContentServiceState(true);
 		$this->config->setSystemValue('googleanalytics_tracking_key', 'UA-123456-1');
 
 		$response = $this->controller->tracking();
