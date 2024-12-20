@@ -11,9 +11,6 @@ use OCP\IRequest;
 
 class JavaScriptController extends Controller
 {
-    /** @var \OCP\IConfig */
-    protected $config;
-
     /**
      * constructor of the controller
      *
@@ -24,10 +21,9 @@ class JavaScriptController extends Controller
     public function __construct(
         $appName,
         IRequest $request,
-        Config $config
+        protected Config $config
     ) {
         parent::__construct($appName, $request);
-        $this->config = $config;
     }
 
     /**
