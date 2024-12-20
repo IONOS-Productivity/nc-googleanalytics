@@ -3,7 +3,7 @@ Upstream-Name: HiDrive Next Analytics
 Upstream-Contact: Mikhailo Matiyenko-Kupriyanov <kupriyanov+nextcloud@strato.de>
 Source: https://github.com/nextcloud/profiler
 
-Files: package-lock.json package.json composer.json composer.lock lib/*.php lib/**/*.php appinfo/* js/*.js README.md
+Files: package-lock.json package.json composer.json composer.lock lib/**/* lib/**/ appinfo/* js/* test/**/* README.md
 Copyright: 2024 STRATO AG
 License: AGPL-3.0-or-later
 
