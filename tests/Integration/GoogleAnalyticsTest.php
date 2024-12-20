@@ -17,54 +17,49 @@ use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
-class GoogleAnalyticsTest extends TestCase
-{
-    private JavaScriptController $controller;
+class GoogleAnalyticsTest extends TestCase {
+	private JavaScriptController $controller;
 
-    private IConfig $config;
+	private IConfig $config;
 
-    /**
-     * @throws ContainerExceptionInterface
-     * @throws HintException
-     * @throws NotFoundExceptionInterface
-     */
-    public function setUp(): void
-    {
-        $this->config = \OC::$server->getConfig();
-        $this->config->setSystemValue('googleanalytics_tracking_key', null);
+	/**
+	 * @throws ContainerExceptionInterface
+	 * @throws HintException
+	 * @throws NotFoundExceptionInterface
+	 */
+	public function setUp(): void {
+		$this->config = \OC::$server->getConfig();
+		$this->config->setSystemValue('googleanalytics_tracking_key', null);
 
-        $app = new App('googleanalytics');
-        $container = $app->getContainer();
+		$app = new App('googleanalytics');
+		$container = $app->getContainer();
 
-        $this->controller = $container->get(JavaScriptController::class);
-    }
+		$this->controller = $container->get(JavaScriptController::class);
+	}
 
-    public function tearDown(): void
-    {
-        $this->config->setSystemValue('googleanalytics_tracking_key', null);
-    }
+	public function tearDown(): void {
+		$this->config->setSystemValue('googleanalytics_tracking_key', null);
+	}
 
-    /**
-     * @throws Exception
-     */
-    public function testTrackingReturnsDisabledResponseWhenNoKey(): void
-    {
-        $response = $this->controller->tracking();
+	/**
+	 * @throws Exception
+	 */
+	public function testTrackingReturnsDisabledResponseWhenNoKey(): void {
+		$response = $this->controller->tracking();
 
-        $this->assertInstanceOf(TextPlainResponse::class, $response);
-        $this->assertEquals('// tracking disabled', $response->render());
-    }
+		$this->assertInstanceOf(TextPlainResponse::class, $response);
+		$this->assertEquals('// tracking disabled', $response->render());
+	}
 
-    /**
-     * @throws Exception
-     */
-    public function testTrackingReturnsScriptResponseWhenKeyExists(): void
-    {
-        $this->config->setSystemValue('googleanalytics_tracking_key', 'UA-123456-1');
+	/**
+	 * @throws Exception
+	 */
+	public function testTrackingReturnsScriptResponseWhenKeyExists(): void {
+		$this->config->setSystemValue('googleanalytics_tracking_key', 'UA-123456-1');
 
-        $response = $this->controller->tracking();
+		$response = $this->controller->tracking();
 
-        $this->assertInstanceOf(DataDownloadResponse::class, $response);
-        $this->assertStringContainsString('UA-123456-1', $response->render());
-    }
+		$this->assertInstanceOf(DataDownloadResponse::class, $response);
+		$this->assertStringContainsString('UA-123456-1', $response->render());
+	}
 }
