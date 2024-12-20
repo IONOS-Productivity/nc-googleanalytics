@@ -1,4 +1,4 @@
-# ENC Analytics
+# HiDrive Next Analytics
 Place this app in **nextcloud/apps/**
 App folder should be "googleanalytics"
 
