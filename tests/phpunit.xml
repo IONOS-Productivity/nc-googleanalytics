@@ -18,4 +18,14 @@
             <directory suffix="Test.php">./Unit</directory>
         </testsuite>
     </testsuites>
+    <coverage>
+        <include>
+            <directory suffix=".php">../lib</directory>
+            <directory suffix=".php">../appinfo</directory>
+        </include>
+        <report>
+            <clover outputFile="clover.xml"/>
+            <html outputDirectory="coverage"/>
+        </report>
+    </coverage>
 </phpunit>
