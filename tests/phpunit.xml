@@ -2,7 +2,11 @@
 <phpunit
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         bootstrap="bootstrap.php"
+        verbose="true"
         colors="true"
+        timeoutForSmallTests="900"
+        timeoutForMediumTests="900"
+        timeoutForLargeTests="900"
         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.6/phpunit.xsd"
 >
     <!--
@@ -11,7 +15,7 @@
     -->
     <testsuites>
         <testsuite name="unit">
-            <directory>./Unit</directory>
+            <directory suffix="Test.php">./Unit</directory>
         </testsuite>
     </testsuites>
 </phpunit>
