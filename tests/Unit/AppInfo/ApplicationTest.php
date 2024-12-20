@@ -12,14 +12,15 @@ use OCA\NCGoogleAnalytics\AppInfo\Application;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Http\ContentSecurityPolicy;
 use OCP\IURLGenerator;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ApplicationTest extends TestCase {
 	private Application $application;
-	private $urlGenerator;
-	private $nonceManager;
-	private $contentSecurityPolicyManager;
-	private $context;
+	private IURLGenerator|MockObject $urlGenerator;
+	private ContentSecurityPolicyNonceManager|MockObject $nonceManager;
+	private ContentSecurityPolicyManager|MockObject $contentSecurityPolicyManager;
+	private IBootContext|MockObject $context;
 
 	protected function setUp(): void {
 		$this->urlGenerator = $this->createMock(IURLGenerator::class);
