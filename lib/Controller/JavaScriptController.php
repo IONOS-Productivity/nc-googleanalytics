@@ -10,7 +10,6 @@ use OCA\NCGoogleAnalytics\Config;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\DataDownloadResponse;
 use OCP\AppFramework\Http\TextPlainResponse;
-use OCP\IConfig;
 use OCP\IRequest;
 
 class JavaScriptController extends Controller {
@@ -19,7 +18,7 @@ class JavaScriptController extends Controller {
 	 *
 	 * @param string $appName
 	 * @param IRequest $request
-	 * @param IConfig $config
+	 * @param Config $config
 	 */
 	public function __construct(
 		$appName,
