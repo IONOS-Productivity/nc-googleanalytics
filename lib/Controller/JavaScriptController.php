@@ -1,5 +1,9 @@
 <?php
 
+// SPDX-FileCopyrightText: 2024 STRATO AG
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 namespace OCA\NCGoogleAnalytics\Controller;
 
 use OCA\NCGoogleAnalytics\Config;
