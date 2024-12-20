@@ -1,4 +1,10 @@
-<phpunit bootstrap="bootstrap.php" colors="true">
+<?xml version="1.0" encoding="utf-8"?>
+<phpunit
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        bootstrap="bootstrap.php"
+        colors="true"
+        xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.6/phpunit.xsd"
+>
     <!--
     SPDX-FileCopyrightText: Mikhailo Matiyenko-Kupriyanov <kupriyanov+nextcloud@strato.de>
     SPDX-License-Identifier: AGPL-3.0-or-later
