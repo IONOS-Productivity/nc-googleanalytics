@@ -11,9 +11,10 @@ namespace OCA\NCGoogleAnalytics;
 use OCP\IConfig;
 
 class Config {
-	public function __construct($appName, IConfig $config) {
-		$this->appName = $appName;
-		$this->config = $config;
+	public function __construct(
+		protected string $appName,
+		protected IConfig $config,
+	) {
 	}
 
 	public function getTrackingKey(): ?string {
