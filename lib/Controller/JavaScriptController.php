@@ -9,6 +9,9 @@ namespace OCA\NCGoogleAnalytics\Controller;
 use OCA\NCGoogleAnalytics\Config;
 use OCA\NCGoogleAnalytics\Service\Consent\IConsentService;
 use OCP\AppFramework\Controller;
+use OCP\AppFramework\Http\Attribute\NoAdminRequired;
+use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
+use OCP\AppFramework\Http\Attribute\PublicPage;
 use OCP\AppFramework\Http\DataDownloadResponse;
 use OCP\AppFramework\Http\TextPlainResponse;
 use OCP\IRequest;
@@ -32,12 +35,11 @@ class JavaScriptController extends Controller {
 	}
 
 	/**
-	 * @NoAdminRequired
-	 * @NoCSRFRequired
-	 * @PublicPage
-	 *
 	 * @return TextPlainResponse|DataDownloadResponse
 	 */
+	#[NoAdminRequired]
+	#[NoCSRFRequired]
+	#[PublicPage]
 	public function tracking(): TextPlainResponse|DataDownloadResponse {
 		$gtmId = $this->config->getTrackingKey();
 
