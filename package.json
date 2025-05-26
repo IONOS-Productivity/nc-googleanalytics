@@ -16,8 +16,6 @@
     "stylelint": "echo 'Nothing to stylelint'",
     "stylelint:fix": "echo 'Nothing to stylelint'"
   },
-  "dependencies": {
-  },
   "browserslist": [
     "extends @nextcloud/browserslist-config"
   ],
@@ -29,7 +27,6 @@
     "@nextcloud/babel-config": "^1.2.0",
     "@nextcloud/browserslist-config": "^3.0.1",
     "@nextcloud/eslint-config": "^8.4.2",
-    "@nextcloud/stylelint-config": "^2.1.2",
-    "@nextcloud/webpack-vue-config": "^5.2.1"
+    "@nextcloud/stylelint-config": "^2.1.2"
   }
 }
