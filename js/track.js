@@ -5,7 +5,7 @@ window.dataLayer = window.dataLayer || [];
  */
 dataLayer.push({
 	// Don't send referrer and location because they may contain sensitive
-	// personal idendifiable information
+	// personal identifiable information
 	'gtm.blocklist': [
 		// Don't transfer the referrer
 		'f',
