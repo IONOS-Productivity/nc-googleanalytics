@@ -10,7 +10,7 @@ dataLayer.push({
 		// Don't transfer the referrer
 		'f',
 		// Don't transfer the current location (URL)
-		'u'
+		'u',
 	],
 });
 
