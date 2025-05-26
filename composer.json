@@ -15,7 +15,7 @@
 		"sabre/xml": "^2.2",
 		"symfony/event-dispatcher": "^5.3.11",
 		"nextcloud/ocp": "^v31.0.5",
-		"psalm/phar": "^4.10",
+		"psalm/phar": "^5.26.1",
 		"nextcloud/coding-standard": "^1.3.2"
 	},
 	"scripts": {
