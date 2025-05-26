@@ -1,6 +1,6 @@
 {
   "name": "nc-googleanalytics",
-  "description": "GA4 Analytics enabler for Nextcloud",
+  "description": "GA4 Analytics enabler for Nextcloud ertertr",
   "version": "0.0.1",
   "author": "Mikhailo Matiyenko-Kupriyanov <kupriyanov+nextcloud@strato.de>",
   "contributors": [],
@@ -26,7 +26,7 @@
     "npm": "^7.0.0 || ^8.0.0"
   },
   "devDependencies": {
-    "@nextcloud/babel-config": "^1.0.0",
+    "@nextcloud/babel-config": "^1.2.0",
     "@nextcloud/browserslist-config": "^2.2.0",
     "@nextcloud/eslint-config": "^8.0.0",
     "@nextcloud/stylelint-config": "^2.1.2",
