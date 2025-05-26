@@ -36,8 +36,8 @@
 		"test": "phpunit",
 		"test:unit": "phpunit tests -c tests/phpunit.xml --colors=always --fail-on-warning --fail-on-risky",
 		"test:unit:coverage": "export XDEBUG_MODE=coverage && phpunit --configuration tests/phpunit.xml --coverage-html coverage",
-		"test:unit:integration": "phpunit tests -c tests/phpunit.integration.xml --colors=always --fail-on-warning --fail-on-risky",
-		"test:unit:integration:coverage": "export XDEBUG_MODE=coverage && phpunit --configuration tests/phpunit.integration.xml --coverage-html coverage"
+		"test:integration": "phpunit tests -c tests/phpunit.integration.xml --colors=always --fail-on-warning --fail-on-risky",
+		"test:integration:coverage": "export XDEBUG_MODE=coverage && phpunit --configuration tests/phpunit.integration.xml --coverage-html coverage"
 	},
 	"config": {
 		"allow-plugins": {
