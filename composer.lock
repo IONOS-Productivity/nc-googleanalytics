@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6d253dd1e24ff4dbcbaa7452945060a",
+    "content-hash": "88fa0b670a9225959e4a14c546952dac",
     "packages": [],
     "packages-dev": [
         {
@@ -284,29 +284,29 @@
         },
         {
             "name": "nextcloud/ocp",
-            "version": "v30.0.4",
+            "version": "v31.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextcloud-deps/ocp.git",
-                "reference": "6f98dac2ddd6c42e605bc453e5328c0a61f75b8d"
+                "reference": "a6103c4f1f65ef53dded3af4b8f2fdfcb51beb56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextcloud-deps/ocp/zipball/6f98dac2ddd6c42e605bc453e5328c0a61f75b8d",
-                "reference": "6f98dac2ddd6c42e605bc453e5328c0a61f75b8d",
+                "url": "https://api.github.com/repos/nextcloud-deps/ocp/zipball/a6103c4f1f65ef53dded3af4b8f2fdfcb51beb56",
+                "reference": "a6103c4f1f65ef53dded3af4b8f2fdfcb51beb56",
                 "shasum": ""
             },
             "require": {
-                "php": "~8.0 || ~8.1 || ~8.2 || ~8.3",
+                "php": "~8.1 || ~8.2 || ~8.3 || ~8.4",
                 "psr/clock": "^1.0",
                 "psr/container": "^2.0.2",
                 "psr/event-dispatcher": "^1.0",
-                "psr/log": "^2.0.0"
+                "psr/log": "^3.0.2"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-stable30": "30.0.0-dev"
+                    "dev-stable31": "31.0.0-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -317,14 +317,18 @@
                 {
                     "name": "Christoph Wurst",
                     "email": "christoph@winzerhof-wurst.at"
+                },
+                {
+                    "name": "Joas Schilling",
+                    "email": "coding@schilljs.com"
                 }
             ],
-            "description": "Composer package containing Nextcloud's public API (classes, interfaces)",
+            "description": "Composer package containing Nextcloud's public OCP API and the unstable NCU API",
             "support": {
                 "issues": "https://github.com/nextcloud-deps/ocp/issues",
-                "source": "https://github.com/nextcloud-deps/ocp/tree/v30.0.4"
+                "source": "https://github.com/nextcloud-deps/ocp/tree/v31.0.5"
             },
-            "time": "2024-11-29T00:46:59+00:00"
+            "time": "2025-05-07T00:51:25+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -1164,16 +1168,16 @@
         },
         {
             "name": "psr/log",
-            "version": "2.0.0",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "ef29f6d262798707a9edd554e2b82517ef3a9376"
+                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/ef29f6d262798707a9edd554e2b82517ef3a9376",
-                "reference": "ef29f6d262798707a9edd554e2b82517ef3a9376",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
+                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
                 "shasum": ""
             },
             "require": {
@@ -1182,7 +1186,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "3.x-dev"
                 }
             },
             "autoload": {
@@ -1208,9 +1212,9 @@
                 "psr-3"
             ],
             "support": {
-                "source": "https://github.com/php-fig/log/tree/2.0.0"
+                "source": "https://github.com/php-fig/log/tree/3.0.2"
             },
-            "time": "2021-07-14T16:41:46+00:00"
+            "time": "2024-09-11T13:17:53+00:00"
         },
         {
             "name": "sabre/dav",
@@ -2981,13 +2985,13 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {},
-    "platform-dev": {},
+    "platform": [],
+    "platform-dev": [],
     "platform-overrides": {
         "php": "8.1"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }
