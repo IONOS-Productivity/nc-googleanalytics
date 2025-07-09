@@ -1,15 +1,14 @@
-# SPDX-FileCopyrightText: Nextcloud contributors
-# SPDX-License-Identifier: AGPL-3.0-or-later
+# This workflow is provided via the organization template repository
+#
+# https://github.com/nextcloud/.github
+# https://docs.github.com/en/actions/learn-github-actions/sharing-workflows-with-your-organization
+#
+# SPDX-FileCopyrightText: 2022-2024 Nextcloud GmbH and Nextcloud contributors
+# SPDX-License-Identifier: MIT
 
 name: PHPUnit MySQL
 
-on:
-  pull_request:
-  push:
-    branches:
-      - master
-      - stable*
-
+on: pull_request
 
 permissions:
   contents: read
@@ -78,7 +77,7 @@ jobs:
 
     services:
       mysql:
-        image: ghcr.io/nextcloud/continuous-integration-mysql-${{ matrix.mysql-versions }}:latest
+        image: ghcr.io/nextcloud/continuous-integration-mysql-${{ matrix.mysql-versions }}:latest # zizmor: ignore[unpinned-images]
         ports:
           - 4444:3306/tcp
         env:
@@ -107,7 +106,7 @@ jobs:
           path: apps/${{ env.APP_NAME }}
 
       - name: Set up php ${{ matrix.php-versions }}
-        uses: shivammathur/setup-php@9e72090525849c5e82e596468b86eb55e9cc5401 # v2.32.0
+        uses: shivammathur/setup-php@0f7f1d08e3e32076e51cae65eb0b0c871405b16e # v2.34.1
         with:
           php-version: ${{ matrix.php-versions }}
           # https://docs.nextcloud.com/server/stable/admin_manual/installation/source_installation.html#prerequisites-for-manual-installation
@@ -135,7 +134,7 @@ jobs:
         if: steps.check_composer.outputs.files_exists == 'true'
         working-directory: apps/${{ env.APP_NAME }}
         run: |
-          composer remove nextcloud/ocp --dev
+          composer remove nextcloud/ocp --dev --no-scripts
           composer i
 
       - name: Set up Nextcloud

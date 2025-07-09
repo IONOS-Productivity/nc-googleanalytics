@@ -2,17 +2,13 @@
 #
 # https://github.com/nextcloud/.github
 # https://docs.github.com/en/actions/learn-github-actions/sharing-workflows-with-your-organization
-# SPDX-FileCopyrightText: Nextcloud contributors
-# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# SPDX-FileCopyrightText: 2021-2024 Nextcloud GmbH and Nextcloud contributors
+# SPDX-License-Identifier: MIT
 
-name: Lint  info.xml
+name: Lint info.xml
 
-on:
-  pull_request:
-  push:
-    branches:
-      - master
-      - stable*
+on: pull_request
 
 permissions:
   contents: read
