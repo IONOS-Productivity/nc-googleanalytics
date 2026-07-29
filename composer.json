@@ -10,12 +10,10 @@
 	],
 	"require-dev": {
 		"bamarni/composer-bin-plugin": "^1.4",
-		"phpunit/phpunit": "^9",
 		"sabre/dav": "^4.1",
 		"sabre/xml": "^2.2",
 		"symfony/event-dispatcher": "^5.3.11",
 		"nextcloud/ocp": "^v33.0.0",
-		"psalm/phar": "^5.26.1",
 		"nextcloud/coding-standard": "^1.3.2"
 	},
 	"scripts": {
@@ -23,12 +21,12 @@
 			"@composer bin all install --ansi"
 		],
 		"post-update-cmd": [
-			"@composer bin all update --ansi"
+			"@composer bin all install --ansi"
 		],
-		"lint": "find . -name \\*.php -not -path './vendor/*' -print0 | xargs -0 -n1 php -l",
-		"cs:check": "php-cs-fixer fix --dry-run --diff .",
-		"cs:fix": "php-cs-fixer fix .",
-		"psalm": "psalm.phar --threads=1",
+		"lint": "find . -name \\*.php -not -path './vendor/*' -not -path './vendor-bin/*' -not -path './build/*' -print0 | xargs -0 -n1 php -l",
+		"cs:check": "php-cs-fixer fix --dry-run --diff",
+		"cs:fix": "php-cs-fixer fix",
+		"psalm": "psalm --threads=1 --no-cache",
 		"psalm:update-baseline": "psalm.phar --threads=1 --update-baseline",
 		"psalm:update-baseline:force": "psalm.phar --threads=1 --update-baseline --set-baseline=tests/psalm-baseline.xml",
 		"psalm:clear": "psalm.phar --clear-cache && psalm --clear-global-cache",
@@ -37,21 +35,17 @@
 		"test:unit": "phpunit tests -c tests/phpunit.xml --colors=always --fail-on-warning --fail-on-risky",
 		"test:unit:coverage": "export XDEBUG_MODE=coverage && phpunit --configuration tests/phpunit.xml --coverage-html coverage",
 		"test:integration": "phpunit tests -c tests/phpunit.integration.xml --colors=always --fail-on-warning --fail-on-risky",
-		"test:integration:coverage": "export XDEBUG_MODE=coverage && phpunit --configuration tests/phpunit.integration.xml --coverage-html coverage"
+		"test:integration:coverage": "export XDEBUG_MODE=coverage && phpunit --configuration tests/phpunit.integration.xml --coverage-html coverage",
+		"rector": "rector && composer cs:fix"
 	},
 	"config": {
 		"allow-plugins": {
-			"composer/package-versions-deprecated": true,
 			"bamarni/composer-bin-plugin": true
 		},
+		"optimize-autoloader": true,
+		"sort-packages": true,
 		"platform": {
 			"php": "8.1"
-		}
-	},
-	"extra": {
-		"bamarni-bin": {
-			"bin-links": true,
-			"forward-command": false
 		}
 	}
 }
