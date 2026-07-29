@@ -14,6 +14,7 @@ $config
     ->ignoreVCSIgnored(true)
     ->notPath('build')
     ->notPath('l10n')
+	->notPath('node_modules')
     ->notPath('src')
     ->notPath('vendor')
     ->in(__DIR__);
